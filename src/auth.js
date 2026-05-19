@@ -588,7 +588,6 @@ export function getAccountList() {
       lastUsed: a.lastUsed ? new Date(a.lastUsed).toISOString() : null,
       addedAt: new Date(a.addedAt).toISOString(),
       keyPrefix: a.apiKey.slice(0, 8) + '...',
-      apiKey: a.apiKey,
       tier: a.tier || 'unknown',
       capabilities: a.capabilities || {},
       lastProbed: a.lastProbed || 0,

@@ -308,7 +308,7 @@ export function startServer() {
         process.exit(1);
       }
       log.warn(`Port ${config.port} in use, retry ${retryCount}/${maxRetries} in 3s...`);
-      setTimeout(() => server.listen(config.port, '0.0.0.0'), 3000);
+      setTimeout(() => server.listen(config.port, '127.0.0.1'), 3000);
     } else {
       log.error('Server error:', err);
     }
@@ -316,8 +316,8 @@ export function startServer() {
 
   server.getActiveRequests = () => activeRequests.size;
 
-  server.listen({ port: config.port, host: '0.0.0.0' }, () => {
-    log.info(`Server on http://0.0.0.0:${config.port}`);
+  server.listen({ port: config.port, host: '127.0.0.1' }, () => {
+    log.info(`Server on http://127.0.0.1:${config.port}`);
     log.info('  POST /v1/chat/completions  (OpenAI format)');
     log.info('  POST /v1/responses         (OpenAI Responses format)');
     log.info('  POST /v1/messages          (Anthropic format — Claude Code native)');
